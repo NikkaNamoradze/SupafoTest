@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {
   Image,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -27,109 +28,113 @@ const SignUpScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Giriş Yap</Text>
-      <View style={styles.logoContainer}>
-        <Image
-          source={require('../../Assets/Images/Logo.png')}
-          style={styles.logo}
-        />
-      </View>
-      <Text>Ad Soyad</Text>
-      <View style={styles.inputContainer}>
-        <PersonIcon />
-        <TextInput
-          placeholder="Ad Soyad"
-          style={styles.input}
-          value={email}
-          onChangeText={setEmail}
-        />
-      </View>
+      <ScrollView
+        style={{flex: 1, marginVertical: 20}}
+        showsVerticalScrollIndicator={false}>
+        <Text style={styles.header}>Giriş Yap</Text>
+        <View style={styles.logoContainer}>
+          <Image
+            source={require('../../Assets/Images/Logo.png')}
+            style={styles.logo}
+          />
+        </View>
+        <Text>Ad Soyad</Text>
+        <View style={styles.inputContainer}>
+          <PersonIcon />
+          <TextInput
+            placeholder="Ad Soyad"
+            style={styles.input}
+            value={email}
+            onChangeText={setEmail}
+          />
+        </View>
 
-      <Text>Email</Text>
-      <View style={styles.inputContainer}>
-        <MailIcon />
-        <TextInput
-          placeholder="Email"
-          style={styles.input}
-          value={email}
-          onChangeText={setEmail}
-        />
-      </View>
+        <Text>Email</Text>
+        <View style={styles.inputContainer}>
+          <MailIcon />
+          <TextInput
+            placeholder="Email"
+            style={styles.input}
+            value={email}
+            onChangeText={setEmail}
+          />
+        </View>
 
-      <View
-        style={{
-          flexDirection: 'row',
-          width: '100%',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}>
-        <View style={{width: '20%'}}>
-          <Text>Ülke</Text>
-          <View style={styles.inputContainer}>
-            <TextInput
-              placeholder="+90"
-              style={styles.input}
-              value={email}
-              onChangeText={setEmail}
-            />
+        <View
+          style={{
+            flexDirection: 'row',
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+          <View style={{width: '20%'}}>
+            <Text>Ülke</Text>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="+90"
+                style={styles.input}
+                value={email}
+                onChangeText={setEmail}
+              />
+            </View>
+          </View>
+          <View style={{width: '70%'}}>
+            <Text>Telefon Numarası</Text>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="123 456 789"
+                style={styles.input}
+                value={email}
+                onChangeText={setEmail}
+              />
+            </View>
           </View>
         </View>
-        <View style={{width: '70%'}}>
-          <Text>Telefon Numarası</Text>
-          <View style={styles.inputContainer}>
-            <TextInput
-              placeholder="123 456 789"
-              style={styles.input}
-              value={email}
-              onChangeText={setEmail}
-            />
-          </View>
+
+        <Text>Şifre</Text>
+        <View style={styles.inputContainer}>
+          <LockIcon />
+          <TextInput
+            placeholder="Şifre"
+            style={styles.input}
+            secureTextEntry={!showPassword}
+            value={password}
+            onChangeText={setPassword}
+          />
+          <TouchableOpacity onPress={togglePasswordVisibility}>
+            {showPassword ? <EyeTrueIcon /> : <EyeFalseIcon />}
+          </TouchableOpacity>
         </View>
-      </View>
-
-      <Text>Şifre</Text>
-      <View style={styles.inputContainer}>
-        <LockIcon />
-        <TextInput
-          placeholder="Şifre"
-          style={styles.input}
-          secureTextEntry={!showPassword}
-          value={password}
-          onChangeText={setPassword}
-        />
-        <TouchableOpacity onPress={togglePasswordVisibility}>
-          {showPassword ? <EyeTrueIcon /> : <EyeFalseIcon />}
+        <TouchableOpacity style={{alignSelf: 'flex-end'}}>
+          <Text style={styles.forgotText}>Şifreni mi unuttun?</Text>
         </TouchableOpacity>
-      </View>
-      <TouchableOpacity style={{alignSelf: 'flex-end'}}>
-        <Text style={styles.forgotText}>Şifreni mi unuttun?</Text>
-      </TouchableOpacity>
 
-      <TouchableOpacity style={styles.loginButton}>
-        <Text style={styles.loginButtonText}>Giriş Yap</Text>
-      </TouchableOpacity>
-
-      <View style={styles.separatorContainer}>
-        <View style={styles.separator} />
-        <Text style={styles.orText}>VEYA</Text>
-        <View style={styles.separator} />
-      </View>
-
-      <View style={styles.socialContainer}>
-        <TouchableOpacity style={styles.socialButton}>
-          <GoogleIcon />
+        <TouchableOpacity style={styles.loginButton}>
+          <Text style={styles.loginButtonText}>Giriş Yap</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.socialButton}>
-          <AppleIcon />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.socialButton}>
-          <FacebookIcon />
-        </TouchableOpacity>
-      </View>
 
-      <Text style={styles.signupText}>
-        Hesabınız yok mu? <Text style={styles.signupLink}>Kayıt Ol</Text>
-      </Text>
+        <View style={styles.separatorContainer}>
+          <View style={styles.separator} />
+          <Text style={styles.orText}>VEYA</Text>
+          <View style={styles.separator} />
+        </View>
+
+        <View style={styles.socialContainer}>
+          <TouchableOpacity style={styles.socialButton}>
+            <GoogleIcon />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.socialButton}>
+            <AppleIcon />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.socialButton}>
+            <FacebookIcon />
+          </TouchableOpacity>
+        </View>
+
+        <Text style={styles.signupText}>
+          Hesabınız yok mu? <Text style={styles.signupLink}>Kayıt Ol</Text>
+        </Text>
+      </ScrollView>
     </View>
   );
 };
